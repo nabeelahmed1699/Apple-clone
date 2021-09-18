@@ -1,0 +1,441 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@200;300;400;600&display=swap');
+:root {
+    --header-height: 3rem;
+    /*========== Colors ==========*/
+    --off-white: #ccced1;
+    --white: #f5f5f7;
+    --pure-white: #fff;
+    --black-color: #000;
+    /*========== Font and typography ==========*/
+    --body-font: 'Urbanist', sans-serif;
+    --biggest-font-size: 3rem;
+    --bigger-font-size: 2.5rem;
+    --big-font-size: 1.5rem;
+    --h2-font-size: 1.25rem;
+    --h3-font-size: 1rem;
+    --normal-font-size: 0.938rem;
+    --small-font-size: 0.813rem;
+    --smaller-font-size: 0.75rem;
+    --text-line-height: 2rem;
+    /*========== Font weight ==========*/
+    --font-medium: 500;
+    --font-semi-bold: 600;
+    /*========== Margenes Bottom ==========*/
+    --mb-0-5: 0.5rem;
+    --mb-0-75: 0.75rem;
+    --mb-1: 1rem;
+    --mb-1-5: 1.5rem;
+    --mb-2: 2rem;
+    --mb-2-5: 2.5rem;
+    /*========== z index ==========*/
+    --z-tooltip: 10;
+    --z-fixed: 100;
+}
+
+@media screen and (min-width: 968px) {
+    :root {
+        --biggest-font-size: 7.5rem;
+        --bigger-font-size: 4.5rem;
+        --big-font-size: 4rem;
+        --h2-font-size: 1.5rem;
+        --h3-font-size: 1.25rem;
+        --normal-font-size: 1rem;
+        --small-font-size: 0.875rem;
+        --smaller-font-size: 0.813rem;
+    }
+}
+
+
+/*=============== BASE ===============*/
+
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    font-family: var(--body-font);
+    font-size: 17px;
+    line-height: 1.4705882353;
+    font-weight: 400;
+    letter-spacing: 0.022em;
+    background-color: #fff;
+    color: #1d1d1f;
+    font-style: normal;
+}
+
+h1,
+h2,
+h3 {
+    color: var(--title-color);
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+button,
+input {
+    border: none;
+    outline: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.flex {
+    display: flex;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+}
+
+.section {
+    height: 900px;
+}
+
+.btn {
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    font-size: 17px;
+    font-weight: 400;
+    padding: 0.5em 1em;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+
+/* ==============  navbar ================== */
+
+.navbar {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: saturate(180%) blur(20px);
+    justify-content: center;
+    align-items: center;
+    color: var(--off-white);
+    align-items: center;
+    padding: 7px 10%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    transition: all 0.3s cubic-bezier(0.03, 0.32, 1, 1);
+}
+
+.hamburger {
+    display: none;
+}
+
+.nav-list {
+    margin: 0 5rem;
+    width: 80%;
+    max-width: 720px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-item {
+    font-size: var(--small-font-size);
+}
+
+.nav-link {
+    color: var(--off-white);
+}
+
+.nav-link:hover {
+    color: var(--white);
+}
+
+@media (max-width: 760px) {
+    /* ===================== Hamburger =================== */
+    .hamburger {
+        display: flex;
+        align-items: center;
+        width: 20px;
+        height: 20px;
+        position: relative;
+        cursor: pointer;
+    }
+    .hamburger::before,
+    .hamburger::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        background: var(--off-white);
+        transition: all 0.3s cubic-bezier(0.03, 0.32, 1, 1);
+    }
+    .hamburger::before {
+        top: 4px;
+    }
+    .hamburger::after {
+        top: 12px;
+    }
+    .open-hamburger::before {
+        transform: translate(-4px, 4px) rotate(45deg);
+    }
+    .open-hamburger::after {
+        transform: translate(-4px, -4px) rotate(-45deg);
+    }
+    /* ====================Hamburger end ==================== */
+    .navbar {
+        justify-content: space-between;
+    }
+    .nav-list {
+        width: unset;
+        margin: unset;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: -120%;
+        flex-direction: column;
+        background: var(--black-color);
+        height: 0;
+        z-index: -1;
+        overflow: hidden;
+        transition: all 0.3s cubic-bezier(0.03, 0.32, 1, 1);
+    }
+    .nav-open {
+        left: 0;
+        right: 0;
+        top: 100%;
+        height: 100vh;
+        border-top: 0.2px solid var(--off-white);
+    }
+    .nav-item {
+        width: 70%;
+        margin: 1.5rem auto;
+        border-bottom: 0.8px solid var(--off-white);
+    }
+    .bg-black {
+        background: var(--black-color);
+    }
+}
+
+
+/* ======================= Navbar end ======================== */
+
+.section-hero {
+    background-size: 1440px 1058px;
+    background-repeat: no-repeat;
+    background-image: url('./images/hero__x15fcac9fw2q_large.jpg');
+    background-color: #000;
+    background-position: 50%;
+    height: 1013px;
+}
+
+header {
+    display: block;
+}
+
+@media (-webkit-min-device-pixel-ratio: 1.5),
+(min-resolution: 144dpi),
+only screen and (-webkit-min-device-pixel-ratio: 1.5),
+only screen and (min-resolution: 1.5dppx) {
+    .section-hero {
+        background-image: url('./images/hero__x15fcac9fw2q_large_2x.jpg');
+    }
+}
+
+@media only screen and (min-width: 1441px) {
+    .section-hero {
+        background-size: 3008px 1058px;
+        background-repeat: no-repeat;
+        background-image: url('./images/hero__x15fcac9fw2q_xlarge.jpg');
+    }
+}
+
+@media only screen and (min-width: 1441px) and (-webkit-min-device-pixel-ratio: 1.5),
+only screen and (min-width: 1441px) and (min-resolution: 1.5dppx),
+only screen and (min-width: 1441px) and (min-resolution: 144dpi) {
+    .section-hero {
+        background-image: url('./images/hero__x15fcac9fw2q_xlarge_2x.jpg');
+    }
+}
+
+.copy-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.section-hero .copy-container {
+    justify-content: flex-end;
+    color: var(--pure-white);
+    text-align: center;
+    width: 80%;
+    max-width: 900px;
+    margin: 0 auto;
+    margin-bottom: 160px;
+}
+
+.hero-title,
+.section-title {
+    font-size: var(--bigger-font-size);
+    font-weight: 600;
+}
+
+.hero-para,
+.section-para {
+    width: 65%;
+    margin: 10px auto;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+@media (max-width: 760px) {
+    .hero-description {
+        width: 100%;
+    }
+    .hero-para {
+        width: 65%;
+        font-size: var(--h2-font-size);
+    }
+}
+
+.hero-btn {
+    align-self: center;
+    margin-top: 2rem;
+    border: 2px solid var(--pure-white);
+    color: var(--pure-white);
+}
+
+.hero-btn:hover {
+    background: var(--pure-white);
+    color: var(--black-color);
+}
+
+
+/* ====================Section  iphone 13 pro ===================== */
+
+.section-iphone-13-pro {
+    background: #f5f5f7;
+    overflow: hidden;
+}
+
+.section-content {
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+}
+
+.section-content .copy-container {
+    width: 60%;
+    max-width: 800px;
+}
+
+.section-content .bg-container {
+    width: 40%;
+}
+
+.section-content .copy-container .section-title,
+.section-content .copy-container .section-para {
+    width: 100%;
+}
+
+.section-iphone-13-pro .bg-container {
+    position: relative;
+}
+
+.bg-image {
+    position: relative;
+    background-size: contain;
+    opacity: 0;
+    animation: fadeIn 0.15s ease forwards;
+}
+
+.cta-links {
+    margin: 2rem auto;
+}
+
+.cta-links .section-btn {
+    border: 2px solid var(--black-color);
+    color: var(--black-color);
+    margin-left: 20px;
+}
+
+.cta-links .section-btn:hover {
+    background: var(--black-color);
+    color: var(--pure-white);
+}
+
+@media (max-width: 1100px) {
+    .section-content {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        margin-top: 2rem;
+    }
+    .section-content .bg-container {
+        width: 100%;
+    }
+    .copy-container {
+        width: 50%;
+    }
+}
+
+@media (max-width: 760px) {
+    .copy-container .section-para {
+        font-size: 19px;
+    }
+}
+
+@media (max-width: 908px) {
+    .copy-container .section-title {
+        font-size: 54px;
+    }
+}
+
+@media (-webkit-min-device-pixel-ratio: 1.5),
+(min-resolution: 144dpi),
+only screen and (-webkit-min-device-pixel-ratio: 1.5),
+only screen and (min-resolution: 1.5dppx) {
+    .section-iphone-13-pro .bg-iphone-13-pro {
+        background-image: url('./images/iphone_13_pro__cuke1h6a6seq_large_2x.jpg');
+    }
+}
+
+@media only screen and (min-width: 1069px) {
+    .section-iphone-13-pro .copy-container {
+        width: 50%;
+        padding-left: 34px;
+        padding-right: 56px;
+    }
+}
+
+.section-iphone-13-pro .bg-iphone-13-pro {
+    background-repeat: no-repeat;
+    background-image: url('./images/iphone_13_pro__cuke1h6a6seq_large.jpg');
+    position: absolute;
+    width: 910px;
+    height: 996px;
+    transform: translateX(8px);
+}
