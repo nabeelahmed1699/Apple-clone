@@ -406,6 +406,9 @@ only screen and (min-width: 1441px) and (min-resolution: 144dpi) {
     .copy-container .section-para {
         font-size: 19px;
     }
+    .cta-links .section-btn {
+        margin-top: 20px;
+    }
 }
 
 @media (max-width: 908px) {
